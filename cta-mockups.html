@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Escape Collective — Free Member CTA Mockups</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <style>
+
+    /* ─── RESET & SHOWCASE ──────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #242424;
+      color: #fff;
+      padding: 44px 28px 80px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .showcase-header {
+      text-align: center;
+      margin-bottom: 52px;
+    }
+    .showcase-header h1 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #FF6F42;
+      margin-bottom: 6px;
+    }
+    .showcase-header p {
+      font-size: 12px;
+      color: rgba(255,255,255,0.3);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px 32px;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .mockup-block {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .mockup-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.28);
+    }
+    .mockup-label span { color: #FF6F42; }
+
+    /* ─── DEVICE FRAMES ─────────────────────────────────── */
+
+    .frame-desktop {
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.07);
+      box-shadow: 0 24px 80px rgba(0,0,0,0.55), 0 0 0 1px rgba(0,0,0,0.3);
+    }
+
+    .browser-bar {
+      height: 34px;
+      background: #1E1E1E;
+      border-bottom: 1px solid rgba(255,255,255,0.055);
+      display: flex;
+      align-items: center;
+      padding: 0 12px;
+      gap: 6px;
+    }
+    .dot { width: 10px; height: 10px; border-radius: 50%; }
+    .dot:nth-child(1) { background: #FF5F56; }
+    .dot:nth-child(2) { background: #FFBD2E; }
+    .dot:nth-child(3) { background: #27C93F; }
+    .addr-bar {
+      flex: 1;
+      margin-left: 10px;
+      height: 19px;
+      background: rgba(255,255,255,0.055);
+      border-radius: 4px;
+      max-width: 240px;
+      font-size: 9.5px;
+      color: rgba(255,255,255,0.22);
+      display: flex;
+      align-items: center;
+      padding: 0 8px;
+    }
+
+    .page-scene {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 36px 18px;
+      min-height: 460px;
+    }
+
+    /* Dark page (site in dark mode) */
+    .page-scene.dark-page {
+      background: #121212;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 38px 38px;
+    }
+
+    /* Light page (site in light mode) */
+    .page-scene.light-page {
+      background: #F0F0EE;
+      background-image:
+        linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px);
+      background-size: 38px 38px;
+    }
+
+    .overlay {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    .dark-page .overlay  { background: rgba(0,0,0,0.72); }
+    .light-page .overlay { background: rgba(0,0,0,0.44); }
+
+    /* Mobile frame */
+    .frame-mobile {
+      width: 268px;
+      margin: 0 auto;
+      border-radius: 30px;
+      overflow: hidden;
+      border: 2px solid rgba(255,255,255,0.11);
+      box-shadow: 0 24px 80px rgba(0,0,0,0.55);
+    }
+    .notch-bar {
+      height: 26px;
+      background: #181818;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .notch {
+      width: 64px;
+      height: 14px;
+      background: #111;
+      border-radius: 0 0 10px 10px;
+    }
+    .frame-mobile .page-scene { min-height: auto; padding: 14px 10px 16px; }
+
+    /* ─── THE CTA MODAL ─────────────────────────────────── */
+
+    .cta-modal {
+      position: relative;
+      z-index: 2;
+      border-radius: 15px;
+      width: 100%;
+      max-width: 490px;
+    }
+
+    /* Light variant (white modal) */
+    .cta-modal.light {
+      background: #FFFFFF;
+      box-shadow:
+        0 32px 80px rgba(0,0,0,0.48),
+        0 2px 8px rgba(0,0,0,0.12),
+        0 0 0 1px rgba(0,0,0,0.05);
+    }
+    /* Dark variant (#181818 modal) */
+    .cta-modal.dark {
+      background: #1C1C1C;
+      box-shadow:
+        0 32px 80px rgba(0,0,0,0.72),
+        0 0 0 1px rgba(255,255,255,0.065);
+    }
+
+    .modal-inner {
+      padding: 30px 26px 24px;
+    }
+    .is-mobile .modal-inner {
+      padding: 26px 19px 20px;
+    }
+
+    /* Close button */
+    .modal-close {
+      position: absolute;
+      top: 13px;
+      right: 13px;
+      width: 27px;
+      height: 27px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 400;
+      line-height: 1;
+      cursor: pointer;
+      font-family: inherit;
+      border: none;
+    }
+    .light .modal-close {
+      background: rgba(0,0,0,0.06);
+      color: #777;
+    }
+    .dark .modal-close {
+      background: rgba(255,255,255,0.09);
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* EC badge */
+    .modal-badge {
+      width: 58px;
+      height: 58px;
+      display: block;
+      margin: 0 auto 15px;
+      border-radius: 11px;
+    }
+    .is-mobile .modal-badge {
+      width: 50px;
+      height: 50px;
+      margin-bottom: 12px;
+    }
+
+    /* Headline */
+    .modal-headline {
+      font-size: 21px;
+      font-weight: 700;
+      line-height: 1.22;
+      letter-spacing: -0.28px;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .is-mobile .modal-headline { font-size: 18px; }
+    .light .modal-headline { color: #181818; }
+    .dark  .modal-headline { color: #F9F9F9; }
+    .modal-headline .accent { color: #FF6F42; }
+
+    /* Body */
+    .modal-body {
+      font-size: 13.5px;
+      line-height: 1.58;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .is-mobile .modal-body { font-size: 12.5px; }
+    .light .modal-body { color: #565656; }
+    .dark  .modal-body { color: #8E8E93; }
+
+    /* Checklist */
+    .modal-checklist {
+      list-style: none;
+      margin-bottom: 18px;
+    }
+    .modal-checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 1.4;
+      padding: 4px 0;
+    }
+    .is-mobile .modal-checklist li { font-size: 12px; }
+    .light .modal-checklist li { color: #2E2E2E; }
+    .dark  .modal-checklist li { color: rgba(249,249,249,0.83); }
+
+    .check-circle {
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      background: rgba(255,111,66,0.13);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+    }
+
+    /* Divider */
+    .modal-divider {
+      height: 1px;
+      margin: 15px 0;
+    }
+    .light .modal-divider { background: #EBEBEB; }
+    .dark  .modal-divider { background: rgba(255,255,255,0.08); }
+
+    /* Form row */
+    .modal-form { display: flex; gap: 7px; margin-bottom: 8px; }
+    .is-mobile .modal-form { flex-direction: column; gap: 6px; }
+
+    .modal-input {
+      flex: 1;
+      min-width: 0;
+      height: 43px;
+      border-radius: 9px;
+      border: 1.5px solid;
+      padding: 0 14px;
+      font-family: inherit;
+      font-size: 13px;
+      outline: none;
+    }
+    .is-mobile .modal-input { height: 41px; font-size: 13px; }
+    .modal-input::placeholder { color: #9E9E9E; }
+    .light .modal-input {
+      background: #F6F6F6;
+      border-color: #E2E2E0;
+      color: #181818;
+    }
+    .dark .modal-input {
+      background: #262626;
+      border-color: #393939;
+      color: #F9F9F9;
+    }
+    .dark .modal-input::placeholder { color: #666; }
+
+    .modal-cta {
+      height: 43px;
+      padding: 0 18px;
+      border-radius: 9px;
+      background: #FF6F42;
+      color: #FFFFFF;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      white-space: nowrap;
+      letter-spacing: 0.01em;
+    }
+    .is-mobile .modal-cta {
+      width: 100%;
+      height: 43px;
+    }
+
+    /* Microcopy */
+    .modal-microcopy {
+      font-size: 10.5px;
+      text-align: center;
+      margin-bottom: 13px;
+    }
+    .light .modal-microcopy { color: #ABABAB; }
+    .dark  .modal-microcopy { color: #555; }
+
+    /* Footer note */
+    .modal-footer {
+      font-size: 11.5px;
+      line-height: 1.52;
+      text-align: center;
+      margin-bottom: 11px;
+    }
+    .light .modal-footer { color: #ABABAB; }
+    .dark  .modal-footer { color: #555; }
+
+    /* Sign in */
+    .modal-signin {
+      text-align: center;
+      font-size: 12px;
+    }
+    .light .modal-signin { color: #ABABAB; }
+    .dark  .modal-signin { color: #555; }
+    .modal-signin a {
+      color: #FF6F42;
+      font-weight: 500;
+      text-decoration: none;
+    }
+    .modal-signin a:hover { text-decoration: underline; }
+
+  </style>
+</head>
+<body>
+
+<div class="showcase-header">
+  <h1>Escape Collective — Free Member CTA</h1>
+  <p>4 mockups &nbsp;·&nbsp; Light &amp; Dark popup &nbsp;·&nbsp; Desktop &amp; Mobile</p>
+</div>
+
+<div class="grid">
+
+  <!-- ══════════════════════════
+       1. LIGHT POPUP / DARK PAGE / DESKTOP
+  ══════════════════════════════ -->
+  <div class="mockup-block">
+    <div class="mockup-label"><span>Light popup</span> on dark page — Desktop</div>
+    <div class="frame-desktop">
+      <div class="browser-bar">
+        <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+        <div class="addr-bar">escapecollective.com</div>
+      </div>
+      <div class="page-scene dark-page">
+        <div class="overlay"></div>
+        <div class="cta-modal light">
+          <button class="modal-close">✕</button>
+          <div class="modal-inner">
+            <img class="modal-badge"
+              src="https://escapecollective.com/assets/img/e-paywall.svg"
+              alt="Escape Collective"
+              onerror="this.src='data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNjAgNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjYwIiByeD0iMTIiIGZpbGw9IiNGRjZGNDIiLz48cGF0aCBkPSJNMTggMzBDMTggMjMuMzcgMjMuMzcgMTggMzAgMThDMzYuNjMgMTggNDIgMjMuMzcgNDIgMzBDNDIgMzYuNjMgMzYuNjMgNDIgMzAgNDJDMjMuMzcgNDIgMTggMzYuNjMgMTggMzBaIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIuNSIvPjxwYXRoIGQ9Ik0yMiAzMEMyMiAyNS41OCAyNS41OCAyMiAzMCAyMkMzNC40MiAyMiAzOCAyNS41OCAzOCAzMEMzOCAzNC40MiAzNC40MiAzOCAzMCAzOEMyNS41OCAzOCAyMiAzNC40MiAyMiAzMFoiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMi41Ii8+PGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iNCIgZmlsbD0id2hpdGUiLz48L3N2Zz4='">
+            <h2 class="modal-headline">
+              Serious cycling journalism,<br><span class="accent">funded by riders</span>
+            </h2>
+            <p class="modal-body">Create a free account to read selected stories, listen to our podcasts, and see what Escape Collective is all about. Our deepest reporting and investigations remain member-exclusive.</p>
+            <ul class="modal-checklist">
+              <li>
+                <span class="check-circle"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5.5L4 7.5L8 3" stroke="#FF6F42" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                Read a selection of articles
+              </li>
+              <li>
+                <span class="check-circle"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5.5L4 7.5L8 3" stroke="#FF6F42" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                Follow pro racing and tech coverage
+              </li>
+              <li>
+                <span class="check-circle"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5.5L4 7.5L8 3" stroke="#FF6F42" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                Experience independent cycling journalism
+              </li>
+            </ul>
+            <div class="modal-divider"></div>
+            <div class="modal-form">
+              <input class="modal-input" type="email" placeholder="Enter your email address">
+              <button class="modal-cta">Unlock free access</button>
+            </div>
+            <p class="modal-microcopy">No credit card required. No ads. No spam.</p>
+            <div class="modal-divider"></div>
+            <p class="modal-footer">Most long-form reporting is reserved for members.<br>Start free and decide if Escape is worth supporting.</p>
+            <p class="modal-signin">Already a member? <a href="#">Sign In</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════
+       2. DARK POPUP / LIGHT PAGE / DESKTOP
+  ══════════════════════════════ -->
+  <div class="mockup-block">
+    <div class="mockup-label"><span>Dark popup</span> on light page — Desktop</div>
+    <div class="frame-desktop">
+      <div class="browser-bar">
+        <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+        <div class="addr-bar">escapecollective.com</div>
+      </div>
+      <div class="page-scene light-page">
+        <div class="overlay"></div>
+        <div class="cta-modal dark">
+          <button class="modal-close">✕</button>
+          <div class="modal-inner">
+            <img class="modal-badge"
+              src="https://escapecollective.com/assets/img/e-paywall.svg"
+              alt="Escape Collective"
+              onerror="this.src='data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNjAgNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjYwIiByeD0iMTIiIGZpbGw9IiNGRjZGNDIiLz48cGF0aCBkPSJNMTggMzBDMTggMjMuMzcgMjMuMzcgMTggMzAgMThDMzYuNjMgMTggNDIgMjMuMzcgNDIgMzBDNDIgMzYuNjMgMzYuNjMgNDIgMzAgNDJDMjMuMzcgNDIgMTggMzYuNjMgMTggMzBaIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIuNSIvPjxwYXRoIGQ9Ik0yMiAzMEMyMiAyNS41OCAyNS41OCAyMiAzMCAyMkMzNC40MiAyMiAzOCAyNS41OCAzOCAzMEMzOCAzNC40MiAzNC40MiAzOCAzMCAzOEMyNS41OCAzOCAyMiAzNC40MiAyMiAzMFoiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMi41Ii8+PGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iNCIgZmlsbD0id2hpdGUiLz48L3N2Zz4='">
+            <h2 class="modal-headline">
+              Serious cycling journalism,<br><span class="accent">funded by riders</span>
+            </h2>
+            <p class="modal-body">Create a free account to read selected stories, listen to our podcasts, and see what Escape Collective is all about. Our deepest reporting and investigations remain member-exclusive.</p>
+            <ul class="modal-checklist">
+              <li>
+                <span class="check-circle"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5.5L4 7.5L8 3" stroke="#FF6F42" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                Read a selection of articles
+              </li>
+              <li>
+                <span class="check-circle"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5.5L4 7.5L8 3" stroke="#FF6F42" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                Follow pro racing and tech coverage
+              </li>
+              <li>
+                <span class="check-circle"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5.5L4 7.5L8 3" stroke="#FF6F42" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                Experience independent cycling journalism
+              </li>
+            </ul>
+            <div class="modal-divider"></div>
+            <div class="modal-form">
+              <input class="modal-input" type="email" placeholder="Enter your email address">
+              <button class="modal-cta">Unlock free access</button>
+            </div>
+            <p class="modal-microcopy">No credit card required. No ads. No spam.</p>
+            <div class="modal-divider"></div>
+            <p class="modal-footer">Most long-form reporting is reserved for members.<br>Start free and decide if Escape is worth supporting.</p>
+            <p class="modal-signin">Already a member? <a href="#">Sign In</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════
+       3. LIGHT POPUP / DARK PAGE / MOBILE
+  ══════════════════════════════ -->
+  <div class="mockup-block">
+    <div class="mockup-label"><span>Light popup</span> on dark page — Mobile</div>
+    <div class="frame-mobile">
+      <div class="notch-bar"><div class="notch"></div></div>
+      <div class="page-scene dark-page is-mobile">
+        <div class="overlay"></div>
+        <div class="cta-modal light">
+          <button class="modal-close">✕</button>
+          <div class="modal-inner">
+            <img class="modal-badge"
+              src="https://escapecollective.com/assets/img/e-paywall.svg"
+              alt="Escape Collective"
+              onerror="this.src='data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNjAgNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjYwIiByeD0iMTIiIGZpbGw9IiNGRjZGNDIiLz48cGF0aCBkPSJNMTggMzBDMTggMjMuMzcgMjMuMzcgMTggMzAgMThDMzYuNjMgMTggNDIgMjMuMzcgNDIgMzBDNDIgMzYuNjMgMzYuNjMgNDIgMzAgNDJDMjMuMzcgNDIgMTggMzYuNjMgMTggMzBaIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIuNSIvPjxwYXRoIGQ9Ik0yMiAzMEMyMiAyNS41OCAyNS41OCAyMiAzMCAyMkMzNC40MiAyMiAzOCAyNS41OCAzOCAzMEMzOCAzNC40MiAzNC40MiAzOCAzMCAzOEMyNS41OCAzOCAyMiAzNC40MiAyMiAzMFoiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMi41Ii8+PGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iNCIgZmlsbD0id2hpdGUiLz48L3N2Zz4='">
+            <h2 class="modal-headline">Serious cycling journalism, <span class="accent">funded by riders</span></h2>
+            <p class="modal-body">Create a free account to read selected stories, listen to our podcasts, and see what Escape Collective is all about. Our deepest reporting and investigations remain member-exclusive.</p>
+            <ul class="modal-checklist">
+              <li>
+                <span class="check-circle"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5.5L4 7.5L8 3" stroke="#FF6F42" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                Read a selection of articles
+              </li>
+              <li>
+                <span class="check-circle"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5.5L4 7.5L8 3" stroke="#FF6F42" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                Follow pro racing and tech coverage
+              </li>
+              <li>
+                <span class="check-circle"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5.5L4 7.5L8 3" stroke="#FF6F42" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                Experience independent cycling journalism
+              </li>
+            </ul>
+            <div class="modal-divider"></div>
+            <div class="modal-form">
+              <input class="modal-input" type="email" placeholder="Enter your email address">
+              <button class="modal-cta">Unlock free access</button>
+            </div>
+            <p class="modal-microcopy">No credit card required. No ads. No spam.</p>
+            <div class="modal-divider"></div>
+            <p class="modal-footer">Most long-form reporting is reserved for members. Start free and decide if Escape is worth supporting.</p>
+            <p class="modal-signin">Already a member? <a href="#">Sign In</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════
+       4. DARK POPUP / LIGHT PAGE / MOBILE
+  ══════════════════════════════ -->
+  <div class="mockup-block">
+    <div class="mockup-label"><span>Dark popup</span> on light page — Mobile</div>
+    <div class="frame-mobile">
+      <div class="notch-bar"><div class="notch"></div></div>
+      <div class="page-scene light-page is-mobile">
+        <div class="overlay"></div>
+        <div class="cta-modal dark">
+          <button class="modal-close">✕</button>
+          <div class="modal-inner">
+            <img class="modal-badge"
+              src="https://escapecollective.com/assets/img/e-paywall.svg"
+              alt="Escape Collective"
+              onerror="this.src='data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNjAgNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjYwIiByeD0iMTIiIGZpbGw9IiNGRjZGNDIiLz48cGF0aCBkPSJNMTggMzBDMTggMjMuMzcgMjMuMzcgMTggMzAgMThDMzYuNjMgMTggNDIgMjMuMzcgNDIgMzBDNDIgMzYuNjMgMzYuNjMgNDIgMzAgNDJDMjMuMzcgNDIgMTggMzYuNjMgMTggMzBaIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIuNSIvPjxwYXRoIGQ9Ik0yMiAzMEMyMiAyNS41OCAyNS41OCAyMiAzMCAyMkMzNC40MiAyMiAzOCAyNS41OCAzOCAzMEMzOCAzNC40MiAzNC40MiAzOCAzMCAzOEMyNS41OCAzOCAyMiAzNC40MiAyMiAzMFoiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMi41Ii8+PGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iNCIgZmlsbD0id2hpdGUiLz48L3N2Zz4='">
+            <h2 class="modal-headline">Serious cycling journalism, <span class="accent">funded by riders</span></h2>
+            <p class="modal-body">Create a free account to read selected stories, listen to our podcasts, and see what Escape Collective is all about. Our deepest reporting and investigations remain member-exclusive.</p>
+            <ul class="modal-checklist">
+              <li>
+                <span class="check-circle"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5.5L4 7.5L8 3" stroke="#FF6F42" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                Read a selection of articles
+              </li>
+              <li>
+                <span class="check-circle"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5.5L4 7.5L8 3" stroke="#FF6F42" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                Follow pro racing and tech coverage
+              </li>
+              <li>
+                <span class="check-circle"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5.5L4 7.5L8 3" stroke="#FF6F42" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                Experience independent cycling journalism
+              </li>
+            </ul>
+            <div class="modal-divider"></div>
+            <div class="modal-form">
+              <input class="modal-input" type="email" placeholder="Enter your email address">
+              <button class="modal-cta">Unlock free access</button>
+            </div>
+            <p class="modal-microcopy">No credit card required. No ads. No spam.</p>
+            <div class="modal-divider"></div>
+            <p class="modal-footer">Most long-form reporting is reserved for members. Start free and decide if Escape is worth supporting.</p>
+            <p class="modal-signin">Already a member? <a href="#">Sign In</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /grid -->
+
+</body>
+</html>
