@@ -234,7 +234,8 @@
     .is-mobile .modal-headline { font-size: 18px; }
     .light .modal-headline { color: #181818; }
     .dark  .modal-headline { color: #F9F9F9; }
-    .modal-headline .accent { color: inherit; }
+    .light .modal-headline .accent { color: #181818; }
+    .dark  .modal-headline .accent { color: #F9F9F9; }
 
     /* Body */
     .modal-body {
@@ -300,7 +301,7 @@
       font-size: 13px;
       outline: none;
     }
-    .is-mobile .modal-input { height: 43px; font-size: 13px; }
+    .is-mobile .modal-input { height: 43px; min-height: 43px; font-size: 13px; -webkit-appearance: none; }
     .modal-input::placeholder { color: #9E9E9E; }
     .light .modal-input {
       background: #F6F6F6;
